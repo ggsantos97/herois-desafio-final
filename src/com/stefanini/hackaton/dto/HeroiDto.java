@@ -13,7 +13,7 @@ public class HeroiDto implements Serializable {
 	private Integer defesa;
 	private Integer id;
 	private Integer inteligencia;
-	private String nome;
+	private String 	nome;
 	private Integer poder;
 	private Integer velocidade;
 	private Integer forca;
@@ -93,4 +93,20 @@ public class HeroiDto implements Serializable {
 		this.vida = vida;
 	}
 
+	// métodos para a batalha
+	
+	public Integer atacar() {
+		Integer atk;
+		atk = this.forca + this.ataque + this.defesa;
+		if(atk == 0) atk = 45;
+		return atk;
+	}
+	
+	public Integer combo() {
+		Integer combo;
+		combo =  this.inteligencia + this.defesa + this.poder + this.forca + this.ataque;
+		if(combo == 0) combo = 150;
+		return combo;
+	}
+	
 }

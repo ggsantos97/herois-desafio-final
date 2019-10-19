@@ -1,11 +1,14 @@
 package com.stefanini.hackaton.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,9 +20,8 @@ public class Heroi implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private Integer id;
 	@Id
+	private Integer id;
 	private Integer ataque;
 	private Integer defesa;
 	private Integer inteligencia;
@@ -28,7 +30,9 @@ public class Heroi implements Serializable {
 	private Integer velocidade;
 	private Integer forca;
 	private Integer vida;
-
+	
+	
+	
 	public Integer getAtaque() {
 		return ataque;
 	}
@@ -100,5 +104,19 @@ public class Heroi implements Serializable {
 	public void setVida(Integer vida) {
 		this.vida = vida;
 	}
+	
 
+
+	public Integer atacar() {
+		Integer dano = 100000;	
+		dano += this.ataque * this.forca *this.poder;
+		return dano;
+	}
+	
+	public Integer soltarEspecial() {
+		Integer dano = 200000;
+		dano += this.ataque * (this.inteligencia + 15) * this.forca * this.poder;
+		return dano;
+	}
+	
 }
